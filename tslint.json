@@ -1,0 +1,76 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended", "tslint-consistent-codestyle", "tslint-config-prettier"],
+  "jsRules": {
+    "object-literal-sort-keys": false
+  },
+  "linterOptions": {
+    "exclude": ["**/*.d.ts"]
+  },
+  "rules": {
+    "ban": false,
+    "label-position": true,
+    "member-access": false,
+    "switch-default": true,
+    "ordered-imports": false,
+    "no-collapsible-if": true,
+    "no-string-literal": false,
+    "no-unnecessary-else": true,
+    "no-else-after-return": true,
+    "newline-before-return": true,
+    "object-literal-sort-keys": false,
+    "no-switch-case-fall-through": true,
+    "typedef-whitespace": false,
+
+    "object-shorthand-properties-first": false,
+    "prefer-const": false,
+    "radix": false,
+    "prefer-for-of": false,
+    "no-shadowed-variable": false,
+    "no-empty": false,
+    "max-classes-per-file": false,
+    "no-empty-interface": false,
+    "no-var-requires": false,
+    "unified-signatures": true,
+
+    "quotemark": [false, "single"],
+    "array-type": [true, "array"],
+    "max-line-length": [true, 220],
+    "interface-name": [false, "never-prefix"],
+    "align": [true, "parameters", "statements"],
+    "triple-equals": [true, "allow-null-check"],
+    "no-inferrable-types": [true, "ignore-params"],
+    "arrow-parens": [false, "ban-single-arg-parens"],
+    "typedef": [false,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "variable-declaration",
+      "variable-declaration-ignore-function",
+      "member-variable-declaration",
+      "object-destructuring",
+      "array-destructuring"
+    ],
+    "no-console": [false, "log", "info", "time", "debug", "error", "trace", "timeEnd"],
+    "variable-name": [true, "check-format", "ban-keywords", "allow-pascal-case", "allow-leading-underscore"],
+    "trailing-comma": [
+      false,
+      {
+        "multiline": "never",
+        "singleline": "never"
+      }
+    ],
+    "whitespace": [
+      true,
+      "check-decl",
+      "check-type",
+      "check-branch",
+      "check-module",
+      "check-operator",
+      "check-typecast",
+      "check-separator"
+    ]
+  }
+}

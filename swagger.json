@@ -1,0 +1,20 @@
+{
+  "swaggerDefinition": {
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "REST API FOR LIFT",
+      "description": "A description of your project",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      },
+      "servers": [
+        "http://localhost:8000"
+      ]
+    }
+  },
+  "apis": [
+    "src/routes.ts"
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "name": "typescript-api-starter",
+  "version": "0.1.0",
+  "description": "Starter for Node.js express API with Typescript",
+  "main": "index.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "pre-push": "yarn build"
+    }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "scripts": {
+    "start": "backpack",
+    "clean": "rimraf build",
+    "transpile": "backpack build",
+    "build": "run-s clean lint:fix transpile",
+    "send:mail": "ts-node scripts/mail-test",
+    "load:fake": "NODE_ENV=test ts-node scripts/fake-loader",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+    "seed": "knex seed:run --knexfile=knexfile.ts --verbose",
+    "migrate": "knex migrate:latest --knexfile=knexfile.ts --verbose",
+    "rollback": "knex migrate:rollback --knexfile=knexfile.ts --verbose",
+    "make:seeder": "knex seed:make --knexfile=knexfile.ts",
+    "make:migration": "knex migrate:make --knexfile=knexfile.ts",
+    "lint": "tslint src/**/*.{ts,js} test/**/*.{ts,js}",
+    "lint:fix": "tslint --fix src/**/*.{ts,js} test/**/*.{ts,js}",
+    "prettify": "prettier --single-quote --parser typescript --print-width 120 --write scripts/*.ts src/**/*.{ts,js} test/**/*.{ts,js}",
+    "lint-staged": "lint-staged",
+    "debug": "nodemon --watch src/**/* -e ts,json --exec node --inspect-brk -r ts-node/register -r dotenv/config src/index.ts dotenv_config_path=./.env"
+  },
+  "lint-staged": {
+    "*.{ts, js}": [
+      "tslint --fix src/**/*.{ts,js} test/**/*.{ts,js}",
+      "prettier --single-quote --parser typescript --print-width 120 --write scripts/*.ts src/**/*.{ts,js} test/**/*.{ts,js}",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@types/mocha": "^8.2.1",
+    "@types/swagger-jsdoc": "^6.0.0",
+    "@types/swagger-ui-express": "^4.1.2",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-joi-validation": "5.0.0",
+    "http-status-codes": "^2.1.4",
+    "joi": "^17.4.0",
+    "knex": "0.20.0",
+    "lodash": "^4.17.15",
+    "objection": "^2.2.14",
+    "pg": "^8.5.1",
+    "swagger-express-ts": "^1.0.1",
+    "swagger-jsdoc": "6.0.0",
+    "swagger-ui-express": "^4.1.6",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/bcrypt": "^3.0.0",
+    "@types/bookshelf": "^0.13.3",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.1",
+    "@types/faker": "^4.1.6",
+    "@types/jest": "^26.0.20",
+    "@types/joi": "^14.3.3",
+    "@types/jsonwebtoken": "^8.3.5",
+    "@types/lodash": "^4.14.144",
+    "@types/morgan": "^1.7.37",
+    "@types/node": "^14.0.19",
+    "@types/supertest": "^2.0.8",
+    "@types/winston": "^2.4.4",
+    "babel-jest": "^24.9.0",
+    "backpack-core": "^0.8.4",
+    "cross-env": "^7.0.3",
+    "faker": "^4.1.0",
+    "fork-ts-checker-webpack-plugin": "^2.0.0",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "json-loader": "^0.5.7",
+    "lint-staged": "^9.4.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "rimraf": "^3.0.2",
+    "supertest": "^4.0.2",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^8.10.2",
+    "tsconfig-paths": "^3.9.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-consistent-codestyle": "^1.16.0",
+    "typescript": "^3.9.7",
+    "webpack-cli": "^4.4.0"
+  }
+}
