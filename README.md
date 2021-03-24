@@ -1,4 +1,4 @@
-# [Article](vk.com/@-202627164-the-technical-task-1)
+# [Article](https://vk.com/@-202627164-the-technical-task-1)
 
 ## build
 ```bash
