@@ -1,4 +1,4 @@
-# [Article](https://vk.com/@-202627164-test-task-1)
+# [Article](vk.com/@-202627164-the-technical-task-1)
 
 ## build
 ```bash
@@ -27,7 +27,7 @@ Server started at http://localhost:8000/
 $ yarn test
 ```
 
-## Debug
+## debug
 
 ```bash
 $ npm run debug

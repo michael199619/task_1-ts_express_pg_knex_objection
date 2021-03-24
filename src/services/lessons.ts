@@ -73,7 +73,7 @@ export const save = async (lessonsFilter: LessonsPostFilter): Promise<number[]> 
     throw new Error('teacher does not exists');
   }
 
-  // Параметры lessonsCount и lastDate взаимоисключающие, то есть должен использоваться только один из этих параметров
+  // lessonsCount and lastDate are params mutually exclusive
   if (!lessonsCount) {
     lessonsCount = (+new Date(lastDate) - +new Date(firstDate)) / day;
   }

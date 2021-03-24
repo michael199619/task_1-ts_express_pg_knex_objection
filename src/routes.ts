@@ -13,7 +13,7 @@ const validator = createValidator({
  * @swagger
  * /:
  *   get:
- *     summary: метод осуществляет поиск по данным и возвращает массив объектов - занятий
+ *     summary: Method «/», which is used to search lessons and return the array of objects
  *     parameters:
  *      - in: query
  *        name: date
@@ -21,43 +21,46 @@ const validator = createValidator({
  *          type: string
  *          pattern: '^\d{4}-\d{2}-\d{2}(,\d{4}-\d{2}-\d{2}|)$'
  *        description:
- *          дата в формате YYYY-MM-DD, либо две в таком же формате через запятую (например, «2019-01-01,2019-09-01».
- *          Если указана одна дата, выбираются занятия на эту дату. Если указаны 2 даты, то выбираются занятия за период, включая указанные даты.
+ *          Date of lesson. format YYYY-MM-DD or YYYY-MM-DD,YYYY-MM-DD (example 2019-01-01,2019-09-01).
+ *          If there is one date, then it’s needed to select lessons for this date.
+ *          If there are two dates, then select lessons for the period, using these dates
  *      - in: query
  *        name: status
  *        schema:
  *          type: integer
  *          enum: [0, 1]
  *          default: 0
- *        description: Статус занятия. принимается либо 0 (не проведено), либо 1 (проведено)
+ *        description: Status of lesson. values are 0 (not passed), 1 (passed)
  *      - in: query
  *        name: teacherIds
  *        schema:
  *          type: array
  *          items:
  *            type: integer
- *        description: id учителей через запятую. Выбираются все занятия, которые ведет хотя бы один из указанных учителей
+ *        description: Id of teachers through comma. All lessons, which at least one of these teachers conduct are selected
  *      - in: query
  *        name: page
  *        schema:
  *          type: integer
  *          minimum: 1
- *        description: Номер возвращаемой страницы. первая страница - 1
+ *        description: Number of page. First page - 1
  *      - in: query
  *        name: lessonsPerPage
  *        schema:
  *          type: integer
  *          minimum: 1
  *          default: 5
- *        description: Количество занятий на странице. По-умолчанию - 5 занятий
+ *        description: Count of lessons at page. Default — 5
  *      - in: query
  *        name: studentsCount
  *        schema:
  *          type: string
  *          pattern: '^\d+(,\d+|)$'
  *        description:
- *          количество записанных на занятия учеников. либо одно число (тогда выбирается занятие с точным числом записанных),
- *          либо 2 числа через запятую, тогда они рассматриваются как диапазон и выбираются занятия с количеством записанных, попадающих в диапазон включительно
+ *          Count of students.
+ *          If there is one number then lessons with the exact count of students are selected,
+ *          if there are two numbers (through comma) then they are considered as range.
+ *          Lessons with count in the range inclusive are selected
  *     responses:
  *       '200':
  *          description: OK
@@ -73,7 +76,7 @@ router.get('/', validator.query(LessonsGetSchema), lessons.get);
  * @swagger
  * /lessons:
  *   post:
- *     summary: метод создает одно или несколько занятий
+ *     summary: Method creates one or any lessons
  *     requestBody:
  *      content:
  *         application/json:
